@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&family=Quicksand:wght@300;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;600&family=Roboto:wght@100;300;400&display=swap");
 :root {
-  --font-name: "Josefin Sans", "Roboto", sans-serif;
+  --font-name: "Roboto", sans-serif;
   --font-headlines: "Quicksand", sans-serif;
   --font-body: Arial, Helvetica, sans-serif;
   --body-color: #2d2926;
@@ -42,6 +42,11 @@ header h1 {
 main {
   width: 100%;
   background-color: var(--background-color);
+}
+
+.sections-wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 section {
@@ -98,7 +103,7 @@ section {
 .box {
   position: relative;
   width: 80%;
-  height: 12vw;
+  padding: 2rem 3rem;
   min-height: fit-content;
   border: solid 2px var(--body-color);
   transition: 0.2s;
@@ -185,7 +190,7 @@ h2 {
   width: max(3vw, 3vh, 40px);
   height: max(3vw, 3vh, 40px);
   background-color: var(--background-color);
-  background-image: url(../assets/arrow-down.svg);
+  background-image: url(./assets/arrow-down.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

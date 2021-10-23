@@ -58,7 +58,7 @@ function scrollingChanges(e) {
       bubbleFactory();
     }
 
-    arrow.style.backgroundImage = "url(../assets/arrow-up.svg)";
+    arrow.style.backgroundImage = "url(./assets/arrow-up.svg)";
     arrow.href = "#header";
   } else {
     document.querySelectorAll(".face").forEach((face) => {
@@ -70,7 +70,7 @@ function scrollingChanges(e) {
       face.classList.add("hide");
     });
     if (st < 20) {
-      arrow.style.backgroundImage = "url(../assets/arrow-down.svg)";
+      arrow.style.backgroundImage = "url(./assets/arrow-down.svg)";
       arrow.href = "#quote";
     }
   }
