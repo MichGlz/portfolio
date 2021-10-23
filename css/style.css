@@ -77,8 +77,9 @@ section {
 .svg-container {
   width: max(30vh, 25vw);
   height: max(30vh, 25vw);
-  padding: 0 3rem;
-
+  max-width: 400px;
+  max-height: 400px;
+  padding: 0 max(3rem, 3vw);
   background-color: var(--background-color);
   border-radius: 50%;
   border: solid 2px var(--body-color);
@@ -103,7 +104,7 @@ section {
 .box {
   position: relative;
   width: 80%;
-  padding: 2rem 3rem;
+  height: min(22vw, 12vh);
   min-height: fit-content;
   border: solid 2px var(--body-color);
   transition: 0.2s;
@@ -124,9 +125,11 @@ section {
   box-shadow: inset 0 0 2px 1px var(--body-color);
   border: solid 3px var(--body-color);
   z-index: 0;
+  background-color: var(--body-color);
+  color: var(--background-color);
 }
 
-.box::after {
+/* .box::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -146,11 +149,10 @@ section {
   top: 1%;
   left: 1%;
   border: solid 1px var(--body-color);
-}
+} */
 
 h2 {
   font-family: var(--font-name);
-  color: var(--body-color);
   font-weight: 300;
   font-size: calc(2rem + 2vw);
   text-align: center;
@@ -190,7 +192,7 @@ h2 {
   width: max(3vw, 3vh, 40px);
   height: max(3vw, 3vh, 40px);
   background-color: var(--background-color);
-  background-image: url(./assets/arrow-down.svg);
+  background-image: url(../assets/arrow-down.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
