@@ -16,6 +16,7 @@ body.addEventListener("mousedown", closeOpenEyes);
 body.addEventListener("mouseup", closeOpenEyes);
 body.addEventListener("mousemove", eyeMove);
 document.addEventListener("scroll", scrollingChanges);
+document.querySelectorAll(".box").forEach((box) => box.addEventListener("click", callSection));
 
 function closeOpenEyes() {
   document.querySelectorAll(".eyes").forEach((eye) => {
@@ -55,7 +56,8 @@ function scrollingChanges(e) {
       face.classList.remove("hide");
     });
     if (document.querySelectorAll(".bubble-sprit").length < 20) {
-      bubbleFactory();
+      const bubblesContainer = document.querySelector(".bubbles-container");
+      bubbleFactory(bubblesContainer);
     }
 
     arrow.style.backgroundImage = "url(./assets/arrow-up.svg)";
@@ -77,9 +79,7 @@ function scrollingChanges(e) {
   lastScrollTop = window.pageYOffset;
 }
 
-function bubbleFactory() {
-  const bubblesContainer = document.querySelector(".bubbles-container");
-
+function bubbleFactory(container) {
   for (let i = 1, a = 1; i <= 4; i++, a *= -1, bubbleNumber++) {
     const bubbleSprit = document.createElement("div");
     bubbleSprit.classList.add(`bubble-sprit`);
@@ -94,10 +94,10 @@ function bubbleFactory() {
       });
 
     bubbleSprit.addEventListener("mouseover", explode);
-    bubblesContainer.appendChild(bubbleSprit);
+    container.appendChild(bubbleSprit);
 
-    const bubbleY = bubblesContainer.getBoundingClientRect().height;
-    const bubbleX = bubblesContainer.getBoundingClientRect().width / 2;
+    const bubbleY = container.getBoundingClientRect().height;
+    const bubbleX = container.getBoundingClientRect().width / 2;
 
     const durationNo = 10 * (Math.random() * 3) + 3;
 
@@ -134,4 +134,48 @@ function removeBubble(bubble) {
       theBubble.remove();
     }, 60);
   });
+}
+
+function callSection(e) {
+  console.log("callSection");
+  const templateID = this.dataset.section;
+  console.log(templateID);
+  const template = document.querySelector(templateID).content;
+
+  const copy = template.cloneNode(true);
+
+  const parent = document.querySelector(".sliding-sections-container");
+
+  parent.appendChild(copy);
+
+  const slidingSection = parent.querySelector(".sliding-section");
+  const btnClose = parent.querySelector(".btn-close");
+
+  setTimeout(() => {
+    bubbleFactory(slidingSection);
+  }, 1000);
+
+  btnClose.addEventListener("click", () => {
+    console.log("click btn");
+    slidingAnimation.reverse();
+    slidingAnimation.onfinish = function () {
+      slidingSection.remove();
+    };
+  });
+  const properties = {
+    duration: 1000,
+    // easing: "cubic-bezier(0.55, 0.17, 0.61, 1.45)",
+    easing: "cubic-bezier(.45,.92,.26,1.19)",
+    fill: "forwards",
+  };
+
+  const keyframes = [
+    { transformOrigin: "center", transform: `translateY(-100%)`, opacity: 0.3 },
+    {
+      transformOrigin: "center",
+      transform: `none`,
+      opacity: 1,
+    },
+  ];
+  const slidingAnimation = slidingSection.animate(keyframes, properties);
 }
