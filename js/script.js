@@ -85,7 +85,7 @@ function bubbleFactory(container) {
     bubbleSprit.classList.add(`bubble-sprit`);
     bubbleSprit.classList.add(`bubble-${bubbleNumber}`);
 
-    fetch("./assets/bubble.svg")
+    fetch("./assets/bubble2.svg")
       .then(function (res) {
         return res.text();
       })
@@ -104,8 +104,8 @@ function bubbleFactory(container) {
     const t1 = gsap.timeline({ defaults: { delay: 0.2 * i }, onComplete: removeBubble, onCompleteParams: [`.bubble-${bubbleNumber}`] });
     t1.to(`.bubble-${bubbleNumber}`, { duration: durationNo, y: -1 * bubbleY, ease: "circ.out" });
     gsap.fromTo(`.bubble-${bubbleNumber}`, { x: -a * (Math.random() * 100) }, { duration: durationNo / 4, delay: 0.2 * i, ease: "slow(0.1, 0.4, true)", x: a * (Math.random() * bubbleX) });
-    gsap.to(`.bubble-${bubbleNumber}`, { rotation: 360, duration: 4 + Math.random(), ease: "none", repeat: 10 });
-
+    gsap.to(`path.bubble-body`, { transformOrigin: "50% 50%", rotation: 360, duration: 4 + Math.random(), ease: "none", repeat: 10 });
+    gsap.to(`path.reflection`, { transformOrigin: "100% 50%", rotation: 30, duration: 2 + Math.random(), ease: "Sine.easeInOut", repeat: Infinity, yoyo: true });
     function explode(e) {
       this.querySelectorAll(".bubble-part").forEach((part) => {
         if (!part.classList.contains("hide")) {
