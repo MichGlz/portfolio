@@ -32,10 +32,11 @@ header {
   background-color: var(--background-color);
 }
 
-header h1 {
+h1 {
   font-size: calc(2rem + 5vw);
   font-weight: 300;
   font-family: var(--font-name);
+  letter-spacing: 0.5vw;
   text-align: center;
 }
 
@@ -130,28 +131,6 @@ section {
   color: var(--background-color);
 }
 
-/* .box::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: solid 1px var(--body-color);
-  border-radius: 10px;
-  transition: 0.2s;
-}
-
-.box:hover::after {
-  content: "";
-  width: 98%;
-  height: 98%;
-  position: absolute;
-  top: 1%;
-  left: 1%;
-  border: solid 1px var(--body-color);
-} */
-
 h2 {
   font-family: var(--font-name);
   font-weight: 300;
@@ -159,34 +138,6 @@ h2 {
   text-align: center;
   pointer-events: none;
   /* background-color: violet; */
-}
-
-.bubbles-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vw;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.bubble-sprit {
-  width: calc(3vw + 1rem);
-  height: calc(3vw + 1rem);
-  min-width: 40px;
-  min-height: 40px;
-  position: absolute;
-  top: 100%;
-  left: calc(50% - calc(3vw + 1rem) / 2);
-  cursor: pointer;
-  pointer-events: all;
-  mix-blend-mode: color-burn;
-  z-index: 20;
-}
-
-.bubble-sprit svg {
-  pointer-events: none;
 }
 
 #arrow {
@@ -266,10 +217,10 @@ h2 {
 }
 
 .about-me {
+  --background: var(--background-color);
   height: 100%;
   padding: 2rem;
-  background-color: var(--background-color);
-  /* background-color: violet; */
+  background-color: var(--background);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -279,7 +230,7 @@ h2 {
 .p-wrapper {
   padding: 2.5rem 5vw;
   border-radius: 10px;
-  box-shadow: 0 0 0 1px #2d2926, 0 0 0 4px #f2aa4c, 0 0 0 5px #2d2926, 0 0 0 8px #f2aa4c, 0 0 0 9px #2d2926;
+  box-shadow: 0 0 0 1px var(--body-color), 0 0 0 4px var(--background), 0 0 0 5px var(--body-color), 0 0 0 8px var(--background), 0 0 0 9px var(--body-color);
   position: relative;
   z-index: 0;
 }
@@ -330,10 +281,22 @@ h2 {
 }
 
 section > .btn-close {
+  position: absolute;
   width: 5vw;
   height: 5vw;
   border-radius: 50%;
-  background-color: var(--body-color);
+  background: url(../assets/cross.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 1vw;
+  right: 2vw;
+  cursor: pointer;
+  transition: transform 0.5s;
+  transform: rotate(-60deg);
+}
+
+section > .btn-close:hover {
+  transform: rotate(0);
 }
 
 .slideup {
@@ -352,4 +315,32 @@ section > .btn-close {
   100% {
     transform: translateY(0);
   }
+}
+
+.bubbles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vw;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bubble-sprit {
+  width: calc(3vw + 1rem);
+  height: calc(3vw + 1rem);
+  min-width: 40px;
+  min-height: 40px;
+  position: absolute;
+  top: 100%;
+  left: calc(50% - calc(3vw + 1rem) / 2);
+  cursor: pointer;
+  pointer-events: all;
+  /* mix-blend-mode: multiply; */
+  z-index: 20;
+}
+
+.bubble-sprit svg {
+  pointer-events: none;
 }
