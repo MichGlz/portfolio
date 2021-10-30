@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 110vh;
+      }
+      .svg-container {
+        width: 25%;
+        margin-left: 20%;
+        margin-top: 15%;
+        transform: rotate(-5deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="svg-container">
+      <svg id="Layer_1_copy_Image" data-name="Layer 1 copy Image" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 540.93 720">
+        <defs>
+          <style>
+            .cls-1 {
+              fill: #f7f7f7;
+            }
+
+            .eyeball {
+              transform-box: fill-box;
+              transform-origin: 60% 40%;
+              transform: scale(1.1) rotate(200deg);
+            }
+          </style>
+        </defs>
+        <rect class="cls-1" x="186.3" y="283.29" width="194.69" height="50.36" rx="2.33" />
+        <g class="eyeball">
+          <image id="left-eye_Image" data-name="left-eye Image" width="138" height="131" transform="translate(222.44 289.82) scale(0.23 0.23)" xlink:href="assets/Artboard%2011.png" />
+        </g>
+        <g class="eyeball">
+          <image id="right-eye_Image" data-name="right-eye Image" width="138" height="131" transform="translate(327.12 298.21) scale(0.23 0.23)" xlink:href="assets/Artboard%2012.png" />
+        </g>
+        <image id="Layer_1_copy_Image-2" data-name="Layer 1 copy Image" width="2320" height="3088" transform="scale(0.23 0.23)" xlink:href="assets/Artboard%2013.png" />
+      </svg>
+    </div>
+    <script>
+      document.querySelector(".svg-container").addEventListener("mousemove", eyeMove);
+
+      function eyeMove(e) {
+        const eyes = document.querySelectorAll(".eyeball");
+        eyes.forEach((eye) => {
+          const windowY = window.scrollY;
+          let x = eye.getBoundingClientRect().left + eye.clientWidth / 2;
+          let y = eye.getBoundingClientRect().top + windowY + eye.clientHeight / 2;
+
+          let radian = Math.atan2(e.pageX - x, e.pageY - y);
+          let rotation = radian * (180 / Math.PI) * -1 + 270;
+          eye.style.transform = `scale(1.1) rotate(${rotation}deg)`;
+        });
+      }
+    </script>
+  </body>
+</html>

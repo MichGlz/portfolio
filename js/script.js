@@ -10,6 +10,7 @@ fetch("./assets/face2.svg")
 
 let bubbleNumber = 0;
 let lastScrollTop;
+
 const body = document.querySelector("body");
 
 body.addEventListener("mousedown", closeOpenEyes);
@@ -85,7 +86,7 @@ function bubbleFactory(container) {
     bubbleSprit.classList.add(`bubble-sprit`);
     bubbleSprit.classList.add(`bubble-${bubbleNumber}`);
 
-    fetch("./assets/bubble.svg")
+    fetch("./assets/bubble2.svg")
       .then(function (res) {
         return res.text();
       })
@@ -124,16 +125,18 @@ function bubbleFactory(container) {
 
 function removeBubble(bubble) {
   const theBubble = document.querySelector(bubble);
-  theBubble.querySelectorAll(".bubble-part").forEach((part) => {
-    if (!part.classList.contains("hide")) {
-      part.classList.add("hide");
-    } else {
-      part.classList.remove("hide");
-    }
-    setTimeout(() => {
-      theBubble.remove();
-    }, 60);
-  });
+  if (theBubble) {
+    theBubble.querySelectorAll(".bubble-part").forEach((part) => {
+      if (!part.classList.contains("hide")) {
+        part.classList.add("hide");
+      } else {
+        part.classList.remove("hide");
+      }
+      setTimeout(() => {
+        theBubble.remove();
+      }, 60);
+    });
+  }
 }
 
 function callSection(e) {
@@ -155,12 +158,18 @@ function callSection(e) {
     bubbleFactory(slidingSection);
   }, 1000);
 
-  btnClose.addEventListener("click", () => {
-    console.log("click btn");
-    slidingAnimation.reverse();
-    slidingAnimation.onfinish = function () {
-      slidingSection.remove();
-    };
+  btnClose.addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn-close")) {
+      slidingAnimation.reverse();
+      slidingAnimation.onfinish = function () {
+        document.querySelectorAll(".sliding-section .bubble-sprit").forEach((bubble) => {
+          const animatedClass = bubble.classList[1];
+          gsap.killTweensOf(`.${animatedClass}`);
+        });
+
+        slidingSection.remove();
+      };
+    }
   });
   const properties = {
     duration: 1000,
