@@ -20,6 +20,12 @@ html {
 
 body {
   background-color: var(--background-color);
+  background: rgb(242, 170, 76);
+  background: radial-gradient(circle, rgba(242, 170, 76, 1) 56%, rgba(163, 118, 59, 1) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100% 100vh;
   color: var(--body-color);
   min-height: 120vh;
   width: 100%;
@@ -29,7 +35,7 @@ header {
   width: 100%;
   padding: 2rem;
   color: var(--body-color);
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
 }
 
 h1 {
@@ -42,7 +48,7 @@ h1 {
 
 main {
   width: 100%;
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
 }
 
 .sections-wrapper {
@@ -82,7 +88,7 @@ section {
   max-width: 400px;
   max-height: 400px;
   padding: 0 max(3rem, 3vw);
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
   border-radius: 50%;
   border: solid 2px var(--body-color);
 }
@@ -108,7 +114,8 @@ section {
   width: 80%;
   height: min(22vw, 12vh);
   border: solid 2px var(--body-color);
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
+  background-color: transparent;
   transition: 0.2s;
   cursor: pointer;
   border-radius: 10px;
@@ -116,6 +123,7 @@ section {
   font-weight: 300;
   font-size: calc(2rem + 2vw);
   text-align: center;
+  box-shadow: 3.6px 1.9px 2.7px rgba(0, 0, 0, 0.05), 9px 4.9px 6.9px rgba(0, 0, 0, 0.071), 18.4px 9.9px 14.2px rgba(0, 0, 0, 0.089), 38px 20.4px 29.2px rgba(0, 0, 0, 0.11), 104px 56px 80px rgba(0, 0, 0, 0.16);
 }
 
 .box + .box {
@@ -146,7 +154,7 @@ h2 {
   position: absolute;
   width: max(3vw, 3vh, 40px);
   height: max(3vw, 3vh, 40px);
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
   background-image: url(../assets/arrow-down.svg);
   background-position: center;
   background-repeat: no-repeat;
@@ -182,6 +190,7 @@ h2 {
   border: solid 2px var(--body-color);
   border-radius: 10px;
   /* box-shadow: 0 0 0 1px #2d2926, 0 0 0 4px #f2aa4c, 0 0 0 5px #2d2926, 0 0 0 8px #f2aa4c, 0 0 0 9px #2d2926; */
+  box-shadow: 0.2px 2.7px 2.7px rgba(0, 0, 0, 0.05), 0.6px 6.9px 6.9px rgba(0, 0, 0, 0.071), 1.2px 14px 14.2px rgba(0, 0, 0, 0.089), 2.6px 28.8px 29.2px rgba(0, 0, 0, 0.11), 7px 79px 80px rgba(0, 0, 0, 0.16);
 }
 
 .quote-container p {
@@ -222,10 +231,13 @@ h2 {
   height: 100%;
   padding: 2rem;
   background-color: var(--background);
+  background: radial-gradient(circle, rgba(242, 170, 76, 1) 0%, rgba(163, 118, 59, 1) 80%);
+  background: #252525;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow-y: scroll;
+  color: #f0f0f0;
 }
 
 .p-wrapper {
