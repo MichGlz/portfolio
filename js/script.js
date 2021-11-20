@@ -11,6 +11,13 @@ fetch("./assets/face2.svg")
 let bubbleNumber = 0;
 let lastScrollTop;
 
+const activeSection = {
+  about_me: false,
+  projects: false,
+  sandbox: false,
+  contact: false,
+};
+
 const body = document.querySelector("body");
 
 body.addEventListener("mousedown", closeOpenEyes);
@@ -141,15 +148,23 @@ function removeBubble(bubble) {
 
 function callSection(e) {
   console.log("callSection");
+  for (const [key, value] of Object.entries(activeSection)) {
+    activeSection[key] = false;
+  }
   const templateID = this.dataset.section;
+  activeSection[templateID] = true;
   console.log(templateID);
-  const template = document.querySelector(templateID).content;
+  const template = document.querySelector("#" + templateID).content;
 
   const copy = template.cloneNode(true);
 
   const parent = document.querySelector(".sliding-sections-container");
 
   parent.appendChild(copy);
+
+  if (activeSection.projects) {
+    fetchProject();
+  }
 
   const slidingSection = parent.querySelector(".sliding-section");
   const btnClose = parent.querySelector(".btn-close");
@@ -171,6 +186,7 @@ function callSection(e) {
       };
     }
   });
+
   const properties = {
     duration: 1000,
     // easing: "cubic-bezier(0.55, 0.17, 0.61, 1.45)",
@@ -186,5 +202,51 @@ function callSection(e) {
       opacity: 1,
     },
   ];
+
   const slidingAnimation = slidingSection.animate(keyframes, properties);
+}
+
+function fetchProject() {
+  fetch("https://reicpe-9cc2.restdb.io/rest/projects", {
+    method: "GET",
+    headers: {
+      "x-apikey": "606d5dcef5535004310074f4",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+
+      data.forEach((p) => displayProject(p));
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+function displayProject(project) {
+  //grab the template
+  const template = document.querySelector("#project-card-template").content;
+
+  //clone
+  const copy = template.cloneNode(true);
+  //adjust stuff
+  copy.querySelector(".project-title").textContent = project.name;
+  copy.querySelector(".project-description").textContent = project.description;
+  copy.querySelector(".web").href = project.link_web;
+  copy.querySelector(".repo").href = project.link_github;
+
+  copy.querySelector("img").src = imgGenerator(project.name);
+
+  const parent = document.querySelector(".projects-container");
+
+  parent.appendChild(copy);
+}
+
+function imgGenerator(projectName) {
+  projectName = projectName.toLowerCase();
+  const name = projectName.split(" ");
+  projectName = name.join("");
+
+  return `./assets/${projectName}.jpg`;
 }
