@@ -277,6 +277,7 @@ if (sms) {
 
       // This will replace the current entry in the browser's history, without reloading
       window.history.replaceState(nextState, nextTitle, nextURL);
+
       modal.remove();
     });
     modal.classList.add("banish");
