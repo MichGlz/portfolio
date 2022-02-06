@@ -264,12 +264,19 @@ if (sms) {
   modal.appendChild(message);
   const bubblesContainer = document.querySelector(".bubbles-container");
   bubblesContainer.appendChild(modal);
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     bubbleFactory(bubblesContainer);
   }
   setTimeout(() => {
     const modal = document.querySelector(".thanks");
     modal.addEventListener("animationend", () => {
+      // Current URL: https://my-website.com/page_a
+      const nextURL = "https://michgonzalez.com/";
+      const nextTitle = "Mich Gonzalez";
+      const nextState = { additionalInformation: "Updated the URL with JS" };
+
+      // This will replace the current entry in the browser's history, without reloading
+      window.history.replaceState(nextState, nextTitle, nextURL);
       modal.remove();
     });
     modal.classList.add("banish");

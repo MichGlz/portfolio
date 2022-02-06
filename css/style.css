@@ -458,6 +458,8 @@ section > .btn-close:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 #form-email {
@@ -504,6 +506,31 @@ section > .btn-close:hover {
 #form-email button:hover {
   transform: scale(0.98);
   box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 1);
+}
+
+.links-SoMe {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.links-SoMe a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  filter: drop-shadow(15px 15px 28px rgb(0, 0, 0));
+}
+
+.links-SoMe a:hover {
+  transform: scale(0.98);
+  filter: drop-shadow(13px 12px 28px rgb(0, 0, 0));
+}
+
+.links-SoMe img {
+  max-width: 50px;
 }
 
 .thanks {
