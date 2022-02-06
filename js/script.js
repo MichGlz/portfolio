@@ -8,6 +8,10 @@ fetch("./assets/face2.svg")
     document.querySelector(".svg-container").innerHTML = data;
   });
 
+const urlParams = new URLSearchParams(window.location.search);
+
+const sms = urlParams.get("sms");
+
 let bubbleNumber = 0;
 let lastScrollTop;
 
@@ -249,4 +253,25 @@ function imgGenerator(projectName) {
   projectName = name.join("");
 
   return `./assets/${projectName}.jpg`;
+}
+
+if (sms) {
+  const modal = document.createElement("div");
+  modal.classList.add("thanks");
+  const message = document.createElement("h1");
+  const content = document.createTextNode("Thank you! for your email");
+  message.appendChild(content);
+  modal.appendChild(message);
+  const bubblesContainer = document.querySelector(".bubbles-container");
+  bubblesContainer.appendChild(modal);
+  for (let i = 0; i < 10; i++) {
+    bubbleFactory(bubblesContainer);
+  }
+  setTimeout(() => {
+    const modal = document.querySelector(".thanks");
+    modal.addEventListener("animationend", () => {
+      modal.remove();
+    });
+    modal.classList.add("banish");
+  }, 1500);
 }
