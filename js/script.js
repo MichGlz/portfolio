@@ -221,7 +221,13 @@ function fetchProject() {
     .then((data) => {
       console.log(data);
 
-      data.forEach((p) => displayProject(p));
+      data.forEach((p, i, arr) => {
+        displayProject(p);
+
+        if (i + 1 === arr.length) {
+          faderMachine();
+        }
+      });
     })
     .catch((err) => {
       console.error(err);
@@ -282,4 +288,28 @@ if (sms) {
     });
     modal.classList.add("banish");
   }, 1500);
+}
+
+const appearOptions = {
+  threshold: 0,
+  rootMargin: "0px 0px -150px 0px",
+};
+
+const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      entry.target.classList.add("appear");
+      appearOnScroll.unobserve(entry.target);
+    }
+  });
+}, appearOptions);
+
+function faderMachine() {
+  const faders = document.querySelectorAll(".project-card");
+
+  faders.forEach((fader) => {
+    appearOnScroll.observe(fader);
+  });
 }
