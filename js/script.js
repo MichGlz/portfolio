@@ -170,6 +170,35 @@ function callSection(e) {
     fetchProject();
   }
 
+  if (activeSection.sandbox) {
+    const imgFrame = document.querySelector(".svg-container-img");
+    imgFrame.addEventListener("mousemove", eyeMove);
+
+    function eyeMove(e) {
+      const eyes = document.querySelectorAll(".eyeball_2");
+      const fly = document.querySelector(".fly");
+      const windowY = window.scrollY;
+      let xFly = imgFrame.getBoundingClientRect().left;
+      let yFly = imgFrame.getBoundingClientRect().top + windowY;
+      let xPic = xFly + imgFrame.clientWidth / 2;
+      let yPic = yFly + imgFrame.clientHeight / 3;
+      let radianFly = Math.atan2(e.pageX - xPic, e.pageY - yPic);
+      let rotationFly = radianFly * (180 / Math.PI) * -1 + 270;
+      fly.style.transform = `translate(${e.pageX - xFly}px, ${e.pageY - yFly}px) rotate(${rotationFly + Math.floor(Math.random() * 10) + 90}deg)`;
+
+      eyes.forEach((eye) => {
+        let x = eye.getBoundingClientRect().left + eye.clientWidth / 2;
+        let y = eye.getBoundingClientRect().top + windowY + eye.clientHeight / 2;
+        let radian = Math.atan2(e.pageX - x, e.pageY - y);
+        let rotation = radian * (180 / Math.PI) * -1 + 270;
+        eye.style.transform = `scale(1.1) rotate(${rotation}deg)`;
+      });
+    }
+    setTimeout(() => {
+      faderMachine(".sand-project");
+    }, 1000);
+  }
+
   const slidingSection = parent.querySelector(".sliding-section");
   const btnClose = parent.querySelector(".btn-close");
 
@@ -225,7 +254,7 @@ function fetchProject() {
         displayProject(p);
 
         if (i + 1 === arr.length) {
-          faderMachine();
+          faderMachine(".project-card");
         }
       });
     })
@@ -306,8 +335,8 @@ const appearOnScroll = new IntersectionObserver(function (entries, appearOnScrol
   });
 }, appearOptions);
 
-function faderMachine() {
-  const faders = document.querySelectorAll(".project-card");
+function faderMachine(faderClass) {
+  const faders = document.querySelectorAll(faderClass);
 
   faders.forEach((fader) => {
     appearOnScroll.observe(fader);

@@ -6,6 +6,7 @@
   --font-body: Arial, Helvetica, sans-serif;
   --body-color: #2d2926;
   --background-color: #f2aa4c;
+  --whiteOff: #f0f0f0;
   --soft-shodow: 3.6px 1.9px 2.7px rgba(0, 0, 0, 0.05), 9px 4.9px 6.9px rgba(0, 0, 0, 0.071), 18.4px 9.9px 14.2px rgba(0, 0, 0, 0.089), 38px 20.4px 29.2px rgba(0, 0, 0, 0.11), 104px 56px 80px rgba(0, 0, 0, 0.16);
 }
 
@@ -232,6 +233,7 @@ h2 {
   position: relative;
   pointer-events: all;
   z-index: 0;
+  /* color: var(--whiteOff); */
 }
 
 .about-me {
@@ -283,6 +285,7 @@ h2 {
 
 .projects {
   background-color: rgba(100, 64, 134, 1);
+  background-color: var(--body-color);
   width: 100%;
   height: 100%;
   overflow-y: scroll;
@@ -304,6 +307,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   color: var(--background-color);
+  color: var(--whiteOff);
   gap: 2rem;
   justify-content: center;
   opacity: 0;
@@ -312,17 +316,6 @@ h2 {
 
 .project-card.appear {
   animation: slideIn 0.5s linear forwards;
-}
-
-@keyframes slideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(5rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .project-card + .project-card {
@@ -382,7 +375,17 @@ h2 {
 
 .sandbox {
   background-color: rgb(224, 89, 89);
+  background-color: var(--body-color);
+  color: var(--whiteOff);
   overflow-y: scroll;
+}
+
+.sandbox .svg-container-img {
+  position: relative;
+  width: 25%;
+  margin-left: 20%;
+  margin-top: 0%;
+  transform: rotate(-5deg);
 }
 
 .sand-container {
@@ -399,8 +402,25 @@ h2 {
   grid-column-start: 2;
 }
 
-.contact {
-  background-color: teal;
+.sand-project {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+  box-shadow: var(--soft-shodow);
+}
+
+.sand-project.appear {
+  animation: slideIn 0.5s linear forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 section > .btn-close {
@@ -417,6 +437,7 @@ section > .btn-close {
   cursor: pointer;
   transition: transform 0.5s;
   transform: rotate(-60deg);
+  filter: invert(75%);
 }
 
 section > .btn-close:hover {
@@ -424,7 +445,7 @@ section > .btn-close:hover {
 }
 
 .btn-close.invert {
-  filter: invert(75%);
+  filter: invert(0);
 }
 
 .slideup {
@@ -474,6 +495,7 @@ section > .btn-close:hover {
 }
 
 .contact {
+  background-color: teal;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -603,4 +625,29 @@ section > .btn-close:hover {
   .bubbles-container .links-SoMe {
     display: none;
   }
+}
+
+#Layer_1_copy_Image {
+  cursor: none;
+}
+
+.fly {
+  position: absolute;
+  box-shadow: none;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 15%;
+}
+
+.fly img {
+  width: 100%;
+}
+
+#Layer_1_copy_Image + .fly {
+  opacity: 0;
+}
+
+#Layer_1_copy_Image:hover + .fly {
+  opacity: 1;
 }

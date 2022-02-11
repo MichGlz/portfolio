@@ -68,7 +68,7 @@
           <p>Where I have found this new passion for programming and coding, and simultaneously it has stimulated and directed my creativity in many ways.</p>
           <p>// vanilla is my favorite JavaScript flavor</p>
         </div>
-        <div class="btn-close invert"></div>
+        <div class="btn-close"></div>
       </section>
     </template>
     <template id="projects">
@@ -79,78 +79,61 @@
       </section>
     </template>
     <template id="sandbox">
-      <style>
-        .svg-container-img {
-          width: 25%;
-          margin-left: 20%;
-          margin-top: 0%;
-          transform: rotate(-5deg);
-        }
-      </style>
       <section class="sandbox sliding-section">
         <div class="sand-container">
           <!-- <embed type="text/html" src="face2.html" width="100%" height="800" /> -->
-          <div class="svg-container-img">
+          <div class="svg-container-img sand-project">
             <svg id="Layer_1_copy_Image" data-name="Layer 1 copy Image" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 540.93 720">
               <defs>
                 <style>
-                  .cls-1 {
+                  .cls-102 {
                     fill: #f7f7f7;
                   }
 
-                  .eyeball {
+                  .eyeball_2 {
                     transform-box: fill-box;
                     transform-origin: 60% 40%;
                     transform: scale(1.1) rotate(200deg);
                   }
                 </style>
               </defs>
-              <rect class="cls-1" x="186.3" y="283.29" width="194.69" height="50.36" rx="2.33" />
-              <g class="eyeball">
-                <image id="left-eye_Image" data-name="left-eye Image" width="138" height="131" transform="translate(222.44 289.82) scale(0.23 0.23)" xlink:href="assets/Artboard%2011.png" />
+              <rect class="cls-102" x="186.3" y="283.29" width="194.69" height="50.36" rx="2.33" />
+              <g class="eyeball_2">
+                <image id="left-eye_Image" data-name="left-eye Image" width="138" height="131" transform="translate(222.44 289.82) scale(0.23 0.23)" xlink:href="assets/Artboard11.png" />
               </g>
-              <g class="eyeball">
-                <image id="right-eye_Image" data-name="right-eye Image" width="138" height="131" transform="translate(327.12 298.21) scale(0.23 0.23)" xlink:href="assets/Artboard%2012.png" />
+              <g class="eyeball_2">
+                <image id="right-eye_Image" data-name="right-eye Image" width="138" height="131" transform="translate(327.12 298.21) scale(0.23 0.23)" xlink:href="assets/Artboard12.png" />
               </g>
-              <image id="Layer_1_copy_Image-2" data-name="Layer 1 copy Image" width="2320" height="3088" transform="scale(0.23 0.23)" xlink:href="assets/Artboard%2013.png" />
+              <image id="Layer_1_copy_Image-2" data-name="Layer 1 copy Image" width="2320" height="3088" transform="scale(0.23 0.23)" xlink:href="assets/Artboard13.png" />
             </svg>
+            <div class="fly">
+              <image id="fly-2" src="assets/fly-2.png" alt="a fly" />
+            </div>
           </div>
-          <script>
-            document.querySelector(".svg-container").addEventListener("mousemove", eyeMove);
-
-            function eyeMove(e) {
-              const eyes = document.querySelectorAll(".eyeball");
-              eyes.forEach((eye) => {
-                const windowY = window.scrollY;
-                let x = eye.getBoundingClientRect().left + eye.clientWidth / 2;
-                let y = eye.getBoundingClientRect().top + windowY + eye.clientHeight / 2;
-
-                let radian = Math.atan2(e.pageX - x, e.pageY - y);
-                let rotation = radian * (180 / Math.PI) * -1 + 270;
-                eye.style.transform = `scale(1.1) rotate(${rotation}deg)`;
-              });
-            }
-          </script>
-          <p
-            class="codepen"
-            data-height="500"
-            data-default-tab="html,result"
-            data-slug-hash="ExXBaLR"
-            data-user="michglz"
-            style="height: 50vw; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em"
-          >
-            <span>See the Pen <a href="https://codepen.io/michglz/pen/ExXBaLR"> Untitled</a> by MichGlz (<a href="https://codepen.io/michglz">@michglz</a>) on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
-          <p
-            class="codepen"
-            data-height="500"
-            data-default-tab="html,result"
-            data-slug-hash="QWgzOmq"
-            data-user="michglz"
-            style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em"
-          >
-            <span>See the Pen <a href="https://codepen.io/michglz/pen/QWgzOmq"> car-flower-house</a> by MichGlz (<a href="https://codepen.io/michglz">@michglz</a>) on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
+          <div class="sand-project">
+            <p
+              class="codepen sand-project"
+              data-height="500"
+              data-default-tab="html,result"
+              data-slug-hash="ExXBaLR"
+              data-user="michglz"
+              style="height: 50vw; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em"
+            >
+              <span>See the Pen <a href="https://codepen.io/michglz/pen/ExXBaLR"> Untitled</a> by MichGlz (<a href="https://codepen.io/michglz">@michglz</a>) on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+          </div>
+          <div class="sand-project">
+            <p
+              class="codepen sand-project"
+              data-height="500"
+              data-default-tab="html,result"
+              data-slug-hash="QWgzOmq"
+              data-user="michglz"
+              style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em"
+            >
+              <span>See the Pen <a href="https://codepen.io/michglz/pen/QWgzOmq"> car-flower-house</a> by MichGlz (<a href="https://codepen.io/michglz">@michglz</a>) on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+          </div>
         </div>
         <div class="btn-close"></div>
       </section>
@@ -158,7 +141,7 @@
     </template>
     <template id="contact">
       <section class="contact sliding-section">
-        <div class="btn-close"></div>
+        <div class="btn-close invert"></div>
         <form action="https://formsubmit.co/hola@michgonzalez.com" method="POST" id="form-email">
           <label for="email"
             >email:
