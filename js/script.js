@@ -284,8 +284,15 @@ function displayProject(project) {
 
 function imgGenerator(projectName) {
   projectName = projectName.toLowerCase();
-  const name = projectName.split(" ");
-  projectName = name.join("");
+  projectName = projectName.split(" ");
+  projectName = projectName.join("");
+  if (projectName.includes("'")) {
+    projectName = projectName.split("'");
+    projectName = projectName.join("");
+  }
+  if (projectName.includes("ø")) {
+    projectName = projectName.replace("ø", "o");
+  }
 
   return `./assets/${projectName}.jpg`;
 }
