@@ -109,7 +109,7 @@ function bubbleFactory(container) {
     container.appendChild(bubbleSprit);
 
     const bubbleY = container.getBoundingClientRect().height;
-    const bubbleX = container.getBoundingClientRect().width / 2;
+    const bubbleX = (container.getBoundingClientRect().width / 2) * 0.8;
 
     const durationNo = 10 * (Math.random() * 3) + 3;
 
