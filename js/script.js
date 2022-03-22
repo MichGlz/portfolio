@@ -1,5 +1,7 @@
 "use strict";
 
+//const API_KEY = process.env.API_KEY;
+
 fetch("./assets/face2.svg")
   .then(function (res) {
     return res.text();
@@ -244,6 +246,7 @@ function fetchProject() {
     method: "GET",
     headers: {
       "x-apikey": "606d5dcef5535004310074f4",
+      //"x-apikey": API_KEY,
     },
   })
     .then((res) => res.json())
