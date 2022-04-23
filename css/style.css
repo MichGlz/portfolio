@@ -130,6 +130,7 @@ section {
   position: relative;
   width: 80%;
   height: min(calc(22vw * var(--factor)), 12vh);
+  min-height: calc(3rem + calc(2vw * var(--factor)));
   border: solid 2px var(--body-color);
   /* background-color: var(--background-color); */
   background-color: transparent;
