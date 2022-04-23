@@ -126,8 +126,6 @@ section {
   align-items: center;
 }
 
-/*-----------------------------------------------*/
-
 .box {
   position: relative;
   width: 80%;
@@ -230,14 +228,10 @@ h2 {
 }
 
 .sliding-sections-container {
-  width: calc(100vw * var(--factor));
-  /*----------test-------------*/
   width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
-  left: calc(50vw - calc(50vw * var(--factor)));
-  /*----------test-------------*/
   left: 0;
   z-index: 2;
   overflow: hidden;
@@ -452,8 +446,6 @@ section > .btn-close {
   background-size: contain;
   background-repeat: no-repeat;
   top: calc(1vw * var(--factor));
-  right: calc(2vw * var(--factor));
-  /*----------test-------------*/
   right: calc(52vw - calc(50vw * var(--factor)));
   cursor: pointer;
   transition: transform 0.5s;
