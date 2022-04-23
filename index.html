@@ -14,59 +14,60 @@
   </head>
 
   <body>
-    <header id="header">
-      <h1>Miguel Gonzalez</h1>
-    </header>
+    <div class="page-wrapper">
+      <header id="header">
+        <h1>Miguel Gonzalez</h1>
+      </header>
 
-    <main>
-      <div class="sections-wrapper">
-        <section id="principal">
-          <div class="svg-container-wrapper">
-            <div class="svg-container"></div>
-          </div>
-          <div class="boxes-container">
-            <button data-section="about_me" class="box top right">about me</button>
-            <button data-section="projects" class="box top left">projects</button>
-            <button data-section="sandbox" class="box bottom right">sandbox</button>
-            <button data-section="contact" class="box bottom left">contact</button>
-          </div>
-        </section>
-        <section id="quote">
-          <div class="quote-container">
-            <p>Coding sometimes causes frustration, which can be triggered as easily as bursting a bubble.</p>
-            <p>Just remember how fun it is to play with them.</p>
-          </div>
-        </section>
-      </div>
-
-      <div class="sliding-sections-container"></div>
-
-      <div class="bubbles-container">
-        <a href="#quote" id="arrow"></a>
-        <ul class="links-SoMe">
-          <li>
-            <a href="https://www.linkedin.com/in/miguel-gonzalez-dasseo/"><img src="./assets/linkedin-transparent.svg" alt="linkedin logo" /> LinkedIn</a>
-          </li>
-          <li>
-            <a href="https://github.com/MichGlz"><img src="./assets/github-transparent.svg" alt="github logo" /> GitHub</a>
-          </li>
-          <li>
-            <a href="https://codepen.io/michglz/"><img src="./assets/codepen-transparent.svg" alt="codepen logo" /> CodePen</a>
-          </li>
-          <li>
-            <div class="orange-toggle">
-              <label for="orange-mode">
-                <input type="checkbox" name="orange-mode" id="orange-mode" checked />
-                <div class="switch"></div>
-              </label>
+      <main>
+        <div class="sections-wrapper">
+          <section id="principal">
+            <div class="svg-container-wrapper">
+              <div class="svg-container"></div>
             </div>
-          </li>
-        </ul>
-      </div>
-    </main>
+            <div class="boxes-container">
+              <button data-section="projects" class="box top left">projects</button>
+              <button data-section="sandbox" class="box bottom right">sandbox</button>
+              <button data-section="about_me" class="box top right">about me</button>
+              <button data-section="contact" class="box bottom left">contact</button>
+            </div>
+          </section>
+          <section id="quote">
+            <div class="quote-container">
+              <p>Coding sometimes causes frustration, which can be triggered as easily as bursting a bubble.</p>
+              <p>Just remember how fun it is to play with them.</p>
+            </div>
+          </section>
+        </div>
 
-    <footer></footer>
+        <div class="sliding-sections-container"></div>
 
+        <div class="bubbles-container">
+          <a href="#quote" id="arrow"></a>
+          <ul class="links-SoMe">
+            <li>
+              <a href="https://www.linkedin.com/in/miguel-gonzalez-dasseo/"><img src="./assets/linkedin-transparent.svg" alt="linkedin logo" /> LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://github.com/MichGlz"><img src="./assets/github-transparent.svg" alt="github logo" /> GitHub</a>
+            </li>
+            <li>
+              <a href="https://codepen.io/michglz/"><img src="./assets/codepen-transparent.svg" alt="codepen logo" /> CodePen</a>
+            </li>
+            <li>
+              <div class="orange-toggle">
+                <label for="orange-mode">
+                  <input type="checkbox" name="orange-mode" id="orange-mode" checked />
+                  <div class="switch"></div>
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </main>
+
+      <footer></footer>
+    </div>
     <template id="about_me">
       <section class="about-me sliding-section btn-close">
         <div class="p-wrapper">
@@ -180,7 +181,7 @@
 
           <label for="message"
             >your message:
-            <input type="text" name="message" placeholder="write your message here" required />
+            <textarea name="message" placeholder="write your message here" rows="3" required></textarea>
           </label>
 
           <button type="submit">Send</button>
