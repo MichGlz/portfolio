@@ -25,12 +25,27 @@ const activeSection = {
 };
 
 const body = document.querySelector("body");
+const orangeToggle = document.querySelector("#orange-mode");
 
 body.addEventListener("mousedown", closeOpenEyes);
 body.addEventListener("mouseup", closeOpenEyes);
 body.addEventListener("mousemove", eyeMove);
 document.addEventListener("scroll", scrollingChanges);
 document.querySelectorAll(".box").forEach((box) => box.addEventListener("click", callSection));
+
+orangeToggle.addEventListener("click", () => {
+  const root = document.documentElement;
+
+  if (orangeToggle.checked) {
+    root.style.setProperty("--body-color", " #2d2926");
+    root.style.setProperty("--background-color", "#f2aa4c");
+    root.style.setProperty("--background-gradient", "radial-gradient(circle, rgba(242, 170, 76, 1) 56%, rgba(163, 118, 59, 1) 100%)");
+  } else {
+    root.style.setProperty("--body-color", " #2d2926");
+    root.style.setProperty("--background-color", "#fff");
+    root.style.setProperty("--background-gradient", "#fff");
+  }
+});
 
 function closeOpenEyes() {
   document.querySelectorAll(".eyes").forEach((eye) => {
