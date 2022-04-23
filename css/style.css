@@ -10,6 +10,7 @@
   --background-gradient: radial-gradient(circle, rgba(242, 170, 76, 1) 56%, rgba(163, 118, 59, 1) 100%);
   --whiteOff: #f0f0f0;
   --soft-shodow: 3.6px 1.9px 2.7px rgba(0, 0, 0, 0.05), 9px 4.9px 6.9px rgba(0, 0, 0, 0.071), 18.4px 9.9px 14.2px rgba(0, 0, 0, 0.089), 38px 20.4px 29.2px rgba(0, 0, 0, 0.11), 104px 56px 80px rgba(0, 0, 0, 0.16);
+  --factor: 1;
 }
 
 * {
@@ -34,9 +35,10 @@ body {
   width: 100%;
 }
 
-/* .page-wrapper {
+.page-wrapper {
   max-width: 1700px;
-} */
+  margin: 0 auto;
+}
 
 a {
   font-style: none;
@@ -54,10 +56,10 @@ header {
 }
 
 h1 {
-  font-size: calc(2rem + 5vw);
+  font-size: calc(2rem + calc(5vw * var(--factor)));
   font-weight: 300;
   font-family: var(--font-name);
-  letter-spacing: 0.5vw;
+  letter-spacing: calc(0.5vw * var(--factor));
   text-align: center;
 }
 
@@ -98,11 +100,11 @@ section {
 }
 
 .svg-container {
-  width: max(30vh, 25vw);
-  height: max(30vh, 25vw);
+  width: max(30vh, calc(25vw * var(--factor)));
+  height: max(30vh, calc(25vw * var(--factor)));
   max-width: 400px;
   max-height: 400px;
-  padding: 0 max(3rem, 3vw);
+  padding: 0 max(3rem, calc(3vw * var(--factor)));
   /* background-color: var(--background-color); */
   border-radius: 50%;
   border: solid 2px var(--body-color);
@@ -116,7 +118,7 @@ section {
   width: 50%;
   min-width: 350px;
   height: fit-content;
-  padding: calc(1rem + 2vw);
+  padding: calc(1rem + calc(2vw * var(--factor)));
   /* background-color: yellow; */
   display: flex;
   flex-direction: column;
@@ -124,10 +126,12 @@ section {
   align-items: center;
 }
 
+/*-----------------------------------------------*/
+
 .box {
   position: relative;
   width: 80%;
-  height: min(22vw, 12vh);
+  height: min(calc(22vw * var(--factor)), 12vh);
   border: solid 2px var(--body-color);
   /* background-color: var(--background-color); */
   background-color: transparent;
@@ -136,7 +140,7 @@ section {
   border-radius: 10px;
   font-family: var(--font-name);
   font-weight: 300;
-  font-size: calc(2rem + 2vw);
+  font-size: calc(2rem + calc(2vw * var(--factor)));
   text-align: center;
   box-shadow: var(--soft-shodow);
 }
@@ -162,7 +166,7 @@ section {
 h2 {
   font-family: var(--font-name);
   font-weight: 300;
-  font-size: calc(2rem + 2vw);
+  font-size: calc(2rem + calc(2vw * var(--factor)));
   text-align: center;
   pointer-events: none;
   /* background-color: violet; */
@@ -171,8 +175,8 @@ h2 {
 #arrow {
   display: block;
   position: absolute;
-  width: max(3vw, 3vh, 40px);
-  height: max(3vw, 3vh, 40px);
+  width: max(calc(3vw * var(--factor)), 3vh, 40px);
+  height: max(calc(3vw * var(--factor)), 3vh, 40px);
   /* background-color: var(--background-color); */
   background-image: url(../assets/arrow-down.svg);
   background-position: center;
@@ -201,11 +205,11 @@ h2 {
 #quote {
   justify-content: center;
   align-items: center;
-  padding: calc(2rem + 6vw) 1rem;
+  padding: calc(2rem + calc(6vw * var(--factor))) 1rem;
 }
 
 .quote-container {
-  padding: 2.5rem 5vw;
+  padding: 2.5rem calc(5vw * var(--factor));
   border: solid 2px var(--body-color);
   border-radius: 10px;
   box-shadow: 0.2px 2.7px 2.7px rgba(0, 0, 0, 0.05), 0.6px 6.9px 6.9px rgba(0, 0, 0, 0.071), 1.2px 14px 14.2px rgba(0, 0, 0, 0.089), 2.6px 28.8px 29.2px rgba(0, 0, 0, 0.11), 7px 79px 80px rgba(0, 0, 0, 0.16);
@@ -215,7 +219,7 @@ h2 {
   font-family: var(--font-name);
   color: var(--body-color);
   font-weight: 300;
-  font-size: calc(2rem + 2vw);
+  font-size: calc(2rem + calc(2vw * var(--factor)));
   text-align: center;
   pointer-events: none;
   max-width: 20ch;
@@ -226,10 +230,14 @@ h2 {
 }
 
 .sliding-sections-container {
+  width: calc(100vw * var(--factor));
+  /*----------test-------------*/
   width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
+  left: calc(50vw - calc(50vw * var(--factor)));
+  /*----------test-------------*/
   left: 0;
   z-index: 2;
   overflow: hidden;
@@ -258,7 +266,7 @@ h2 {
 }
 
 .p-wrapper {
-  padding: 2.5rem 5vw;
+  padding: 2.5rem calc(5vw * var(--factor));
   position: relative;
   z-index: 0;
 }
@@ -278,13 +286,13 @@ h2 {
 .p-wrapper p {
   margin-top: 2rem;
   font-family: var(--font-body);
-  font-size: calc(1rem + 0.5vw);
+  font-size: calc(1rem + calc(0.5vw * var(--factor)));
   max-width: 45ch;
 }
 
 .about-me img {
   width: 100%;
-  height: min(20vh, 20vw);
+  height: min(20vh, calc(20vw * var(--factor)));
   min-height: 50px;
   object-fit: cover;
   pointer-events: none;
@@ -301,8 +309,9 @@ h2 {
 }
 
 .projects-container {
-  width: 100%;
+  width: calc(100% * var(--factor));
   height: max-content;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1rem 1fr 1rem;
   padding-top: 5rem;
@@ -328,7 +337,7 @@ h2 {
 }
 
 .project-card + .project-card {
-  margin-top: calc(1rem + 2vw);
+  margin-top: calc(1rem + calc(2vw * var(--factor)));
 }
 
 .project-card:nth-child(even) {
@@ -369,7 +378,7 @@ h2 {
 
 .project-card .image-wrapper {
   width: 50%;
-  min-width: min(80vw, 350px);
+  min-width: min(calc(80vw * var(--factor)), 350px);
   max-width: 800px;
   height: fit-content;
   overflow: hidden;
@@ -398,7 +407,8 @@ h2 {
 }
 
 .sand-container {
-  width: 100%;
+  width: calc(100% * var(--factor));
+  margin: 0 auto;
   height: fit-content;
   display: grid;
   grid-template-columns: 1rem 1fr 1rem;
@@ -435,14 +445,16 @@ h2 {
 section > .btn-close {
   --crosscolor: var(--body-color);
   position: absolute;
-  width: max(5vw, 50px);
-  height: max(5vw, 50px);
+  width: max(calc(5vw * var(--factor)), 50px);
+  height: max(calc(5vw * var(--factor)), 50px);
   border-radius: 50%;
   background: url(../assets/cross.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  top: 1vw;
-  right: 2vw;
+  top: calc(1vw * var(--factor));
+  right: calc(2vw * var(--factor));
+  /*----------test-------------*/
+  right: calc(52vw - calc(50vw * var(--factor)));
   cursor: pointer;
   transition: transform 0.5s;
   transform: rotate(-60deg);
@@ -478,21 +490,21 @@ section > .btn-close:hover {
 .bubbles-container {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: calc(50vw - calc(50vw * var(--factor)));
+  width: calc(100% * var(--factor));
   height: 100vh;
   pointer-events: none;
   z-index: 1;
 }
 
 .bubble-sprit {
-  width: calc(3vw + 1rem);
-  height: calc(3vw + 1rem);
+  width: calc(calc(3vw * var(--factor)) + 1rem);
+  height: calc(calc(3vw * var(--factor)) + 1rem);
   min-width: 40px;
   min-height: 40px;
   position: absolute;
   top: 100%;
-  left: calc(50% - calc(3vw + 1rem) / 2);
+  left: calc(50% - calc(calc(3vw * var(--factor)) + 1rem) / 2);
   cursor: pointer;
   pointer-events: all;
   /* mix-blend-mode: multiply; */

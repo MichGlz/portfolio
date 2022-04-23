@@ -2,6 +2,18 @@
 
 //const API_KEY = process.env.API_KEY;
 
+const root = document.documentElement;
+
+function windowWidth() {
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  const vwFactor = vw > 1700 ? 1700 / vw : 1;
+  console.log(vw);
+  root.style.setProperty("--factor", vwFactor);
+}
+windowWidth();
+
+window.addEventListener("resize", windowWidth);
+
 fetch("./assets/face2.svg")
   .then(function (res) {
     return res.text();
@@ -34,8 +46,6 @@ document.addEventListener("scroll", scrollingChanges);
 document.querySelectorAll(".box").forEach((box) => box.addEventListener("click", callSection));
 
 orangeToggle.addEventListener("click", () => {
-  const root = document.documentElement;
-
   if (orangeToggle.checked) {
     root.style.setProperty("--body-color", " #2d2926");
     root.style.setProperty("--background-color", "#f2aa4c");
