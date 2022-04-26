@@ -573,6 +573,12 @@ section > .btn-close:hover {
   position: absolute;
   margin: 2rem;
   pointer-events: all;
+  font-family: var(--font-body);
+}
+
+#bubble-counter {
+  font-size: 2rem;
+  text-align: center;
 }
 
 .contact .links-SoMe {
@@ -704,11 +710,11 @@ section > .btn-close:hover {
 
 @media only screen and (max-width: 450px) {
   body {
-    background-size: auto;
+    background-size: unset;
   }
 
   .svg-container {
-    padding: 0 max(2rem, calc(3vw * var(--factor)));
+    padding: 0 2rem;
   }
 
   .about-me {
