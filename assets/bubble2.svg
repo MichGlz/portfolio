@@ -16,6 +16,7 @@
 
       .bubble-body {
         fill: #ee82ee;
+        fill:var(--bubble-color);
         stroke: #050303;
         stroke-width: 3px;
         stroke-miterlimit: 10;

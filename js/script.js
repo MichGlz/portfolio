@@ -1,7 +1,8 @@
 "use strict";
-
 //const API_KEY = process.env.API_KEY;
-
+//import bubbleColor from "./modules/bubble_color.js";
+// bubbleColor();
+//import randomColorGenerator from "./modules/random_color";
 const root = document.documentElement;
 
 var isMobile = false; //initiate as false
@@ -49,7 +50,11 @@ const activeSection = {
   contact: false,
 };
 
-let bubbleCounter = 0;
+const bubbleSettings = {
+  score: false,
+  bubbleCounter: 0,
+  bubbleLevel: 0,
+};
 
 const body = document.querySelector("body");
 const orangeToggle = document.querySelector("#orange-mode");
@@ -162,7 +167,14 @@ function bubbleFactory(container) {
     gsap.to(`.bubble-${bubbleNumber}`, { rotation: 360, duration: 4 + Math.random(), ease: "none", repeat: 10 });
 
     function explode(e) {
-      bubbleCounter++;
+      if (!bubbleSettings.score) {
+        bubbleSettings.score = true;
+        document.getElementById("bubble-counter").style.opacity = "1";
+      }
+      bubbleSettings.bubbleCounter++;
+
+      // bubbleColor(bubbleSettings.bubbleCounter);
+
       this.querySelectorAll(".bubble-part").forEach((part) => {
         if (!part.classList.contains("hide")) {
           part.classList.add("hide");
@@ -172,7 +184,7 @@ function bubbleFactory(container) {
         setTimeout(() => {
           t1.kill(`.bubble-${bubbleNumber}`);
           this.remove();
-          document.querySelector("#bubble-counter").textContent = bubbleCounter;
+          document.querySelector("#score").textContent = bubbleSettings.bubbleCounter;
         }, 60);
       });
     }
